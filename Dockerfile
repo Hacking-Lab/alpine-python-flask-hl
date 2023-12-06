@@ -6,7 +6,9 @@ ADD root /
 
 WORKDIR /app
 
-RUN echo "**** install Python ****" && \
+RUN adduser -D flask  && \
+    chown -R flask:flask /app && \
+    echo "**** install Python ****" && \
     apk add --no-cache python3 && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
     \
