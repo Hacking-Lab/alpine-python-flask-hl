@@ -9,7 +9,7 @@ WORKDIR /app
 RUN adduser -D flask  && \
     chown -R flask:flask /app && \
     echo "**** install Python ****" && \
-    apk add --no-cache python3 py3-pip py3-flask && \
+    apk add --no-cache python3 py3-virtualenv py3-pip py3-flask && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
     \
     echo "**** install pip ****" && \
