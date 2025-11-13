@@ -4,19 +4,20 @@ LABEL maintainer="Ivan Buetler <ivan.buetler@hacking-lab.com>"
 # Add the files
 ADD root /
 
-WORKDIR /app
+WORKDIR /opt/app
 
-RUN adduser -D flask  && \
-    chown -R flask:flask /app && \
-    echo "**** install Python ****" && \
-    apk add --no-cache python3 py3-virtualenv py3-pip py3-flask && \
-    if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
+RUN adduser -D flask && \
+    chown -R flask:flask /opt/app && \
     \
-    echo "**** install pip ****" && \
-    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
-    rm -rf /var/cache/apk/* && \
-    cd /app && \
-    pip3 install -r requirements.txt --break-system-packages
+    echo "**** install python ****" && \
+    apk add --no-cache python3 py3-virtualenv && \
+    \
+    echo "**** create venv ****" && \
+    python3 -m venv /opt/venv && \
+    . /opt/venv/bin/activate && \
+    pip install --upgrade pip && \
+    pip install -r /opt/app/requirements.txt
 
-# Expose the ports for the flask app
+ENV PATH="/opt/venv/bin:$PATH"
+
 EXPOSE 80
