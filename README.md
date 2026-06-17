@@ -15,6 +15,14 @@ This image provides a small Flask-based Hacking-Lab landing page. It is built on
 * Static assets: `/opt/app/static/`
 * Templates: `/opt/app/templates/`
 * Container port: `8080`
+* Python dependencies are installed from `requirements.txt` with pinned transitive versions in `constraints.txt`
+
+## Smoke Test
+Run the local build and runtime smoke test:
+
+```bash
+./smoke-test.sh
+```
 
 ## s6 overlay framework
 * version 3

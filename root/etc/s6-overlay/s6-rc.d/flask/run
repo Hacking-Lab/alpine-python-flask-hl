@@ -1,4 +1,4 @@
 #!/command/execlineb -P
 with-contenv
 cd /opt/app
-s6-setuidgid flask gunicorn --bind 0.0.0.0:8080 app:app
+s6-setuidgid flask gunicorn --bind 0.0.0.0:8080 --workers 2 --timeout 30 app:app

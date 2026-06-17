@@ -16,7 +16,7 @@ RUN adduser -D flask && \
     python3 -m venv /opt/venv && \
     . /opt/venv/bin/activate && \
     pip install --upgrade pip && \
-    pip install -r /opt/app/requirements.txt
+    pip install -r /opt/app/requirements.txt -c /opt/app/constraints.txt
 
 ENV PATH="/opt/venv/bin:$PATH"
 

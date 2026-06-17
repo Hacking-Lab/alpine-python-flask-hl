@@ -1,0 +1,9 @@
+.git
+.gitignore
+.codex
+.agents
+*.md
+Dockerfile*
+docker-compose.yml
+build-multi-arch.sh
+smoke-test.sh
