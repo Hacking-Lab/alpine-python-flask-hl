@@ -1,20 +1,26 @@
 # Alpine Python Flask
 ## Introduction
-This image is providing an http echo request service. It will store requests in a text file and load requests from there if the user clicks on /debug. Thus, one can observe multiple log entries. 
+This image provides a small Flask-based Hacking-Lab landing page. It is built on `hackinglab/alpine-base-hl` and uses the base image's s6-overlay v3 runtime to start the web service, cron, user setup, and dynamic flag deployment hooks.
 
 ## Usage
 * xss landing page
-* api request monitoring
+* lightweight CTF web landing service
+* base image for simple Flask challenges
 
 ## Document Root
-* `/app/`
+* `/opt/app/`
+
+## Runtime
+* Flask application: `/opt/app/app.py`
+* Static assets: `/opt/app/static/`
+* Templates: `/opt/app/templates/`
+* Container port: `8080`
 
 ## s6 overlay framework
 * version 3
 
 ## Purpose
-Give cyber security specialists a `landing page` for collecting cookies in a xss scenario. 
+Give cyber security specialists a `landing page` for controlled Hacking-Lab and CTF scenarios.
 
 ## UUID
-This docker was created for the Hacking-Lab CTF framework. Thus, you will find the UUID files (dynamic flag deployment). Ignore them in your own setup
-
+This docker was created for the Hacking-Lab CTF framework. Thus, you will find dynamic flag deployment files and scripts. Ignore or override them in your own setup.

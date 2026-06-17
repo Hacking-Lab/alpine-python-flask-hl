@@ -1,4 +1,4 @@
 #!/command/execlineb -P
 with-contenv
-export FLASK_APP /opt/app/app.py
-s6-setuidgid flask flask run --host=0.0.0.0 --port=8080
+cd /opt/app
+s6-setuidgid flask gunicorn --bind 0.0.0.0:8080 app:app

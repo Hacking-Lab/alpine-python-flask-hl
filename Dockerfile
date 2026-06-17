@@ -20,4 +20,4 @@ RUN adduser -D flask && \
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-EXPOSE 80
+EXPOSE 8080
