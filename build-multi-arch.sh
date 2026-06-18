@@ -8,6 +8,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 version=$1
+image=hackinglab/alpine-python-flask
 image=hackinglab/alpine-python-flask-hl
 platforms=linux/arm64,linux/amd64
 
