@@ -8,10 +8,16 @@ if [ "$#" -ne 1 ]; then
 fi
 
 version=$1
-image=hackinglab/alpine-python-flask
-image=hackinglab/alpine-python-flask-hl
 platforms=linux/arm64,linux/amd64
+images=(
+    hackinglab/alpine-python-flask
+    hackinglab/alpine-python-flask-hl
+)
 
-docker buildx build --platform "$platforms" -t "$image:latest" . --push
-docker buildx build --platform "$platforms" -t "$image:$version" . --push
-docker buildx build --platform "$platforms" -t "$image:$version.0" . --push
+for image in "${images[@]}"; do
+    docker buildx build --platform "$platforms" -t "$image:latest" . --push
+    docker buildx build --platform "$platforms" -t "$image:$version" . --push
+    docker buildx build --platform "$platforms" -t "$image:$version.0" . --push
+done
+
+
